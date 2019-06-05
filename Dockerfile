@@ -8,11 +8,11 @@ WORKDIR /src
 COPY ["rio-test-webapi.csproj", "rio-test-webapi/"]
 RUN dotnet restore "rio-test-webapi/rio-test-webapi.csproj"
 COPY . .
-WORKDIR /src/rio-test-webapi
-RUN dotnet build "rio-test-webapi.csproj" -c Release -o /app
+#WORKDIR /src/rio-test-webapi
+RUN dotnet build -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "rio-test-webapi.csproj" -c Release -o /app
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
