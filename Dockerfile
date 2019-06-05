@@ -17,4 +17,4 @@ RUN dotnet publish "rio-test-webapi.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "rio-test-webapi.dll", "--server.urls", "http://0.0.0.0:80"]
+ENTRYPOINT ["dotnet", "./rio-test-webapi.dll"]
